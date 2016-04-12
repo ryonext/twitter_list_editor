@@ -1,19 +1,17 @@
 h1 Listing lists
 
-table
+table.table
   thead
     tr
-      th
-      th
-      th
+      th name
+      th twitter id
+      th icon
 
   tbody
-    - @lists.each do |list|
-      tr
-        td = link_to 'Show', list
-        td = link_to 'Edit', edit_list_path(list)
-        td = link_to 'Destroy', list, data: {:confirm => 'Are you sure?'}, :method => :delete
-
+    - @lists.each do |user|
+      td
+        = user.name
+        = user.screen_name
+        = image_tag user.profile_image_url
 br
 
-= link_to 'New List', new_list_path
