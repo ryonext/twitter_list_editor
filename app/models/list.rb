@@ -10,7 +10,7 @@ class List
         config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
       end
 
-      client.followers.attrs
+      client.friends.attrs[:users]
     end
   end
 end

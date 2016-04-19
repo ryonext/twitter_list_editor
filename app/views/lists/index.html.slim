@@ -3,15 +3,21 @@ h1 Listing lists
 table.table
   thead
     tr
+      th no
       th name
       th twitter id
       th icon
 
   tbody
-    - @lists.each do |user|
-      td
-        = user.name
-        = user.screen_name
-        = image_tag user.profile_image_url
+    - @lists.each_with_index do |user, i|
+      tr
+        td
+          = i
+        td
+          = user[:name]
+        td
+          = user[:screen_name]
+        td
+          = image_tag user[:profile_image_url]
 br
 
