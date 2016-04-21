@@ -4,9 +4,9 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    lists = List.all(cursor: params[:cursor])
-    @next = lists.attrs[:next_cursor]
-    @lists = lists.take(20)
+    response = twitter.friends(cursor: params[:cursor])
+    @next = response.attrs[:next_cursor]
+    @friends = response.take(20)
   end
 
   # GET /lists/1
@@ -72,5 +72,14 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.fetch(:list, {})
+    end
+
+    def twitter
+      @twitter ||= Twitter::REST::Client.new do |config|
+        config.consumer_key = ENV["CONSUMER_KEY"]
+        config.consumer_secret = ENV["CONSUMER_SECRET"]
+        config.access_token = ENV["ACCESS_TOKEN"]
+        config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
+      end
     end
 end
