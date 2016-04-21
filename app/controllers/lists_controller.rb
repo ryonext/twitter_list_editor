@@ -4,7 +4,9 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    lists = List.all(cursor: params[:cursor])
+    @next = lists.attrs[:next_cursor]
+    @lists = lists.take(20)
   end
 
   # GET /lists/1

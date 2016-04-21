@@ -14,10 +14,10 @@ table.table
         td
           = i
         td
-          = user[:name]
+          = user.name
         td
-          = user[:screen_name]
+          = user.screen_name
         td
-          = image_tag user[:profile_image_url]
-br
-
+          = image_tag user.profile_image_url
+- binding.pry
+= link_to "Next", lists_path(cursor: @next)
