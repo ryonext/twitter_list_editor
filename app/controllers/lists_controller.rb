@@ -7,6 +7,7 @@ class ListsController < ApplicationController
     response = twitter.friends(cursor: params[:cursor])
     @next = response.attrs[:next_cursor]
     @friends = response.take(20)
+    @lists = twitter.lists.sort_by(&:name)
   end
 
   # GET /lists/1
