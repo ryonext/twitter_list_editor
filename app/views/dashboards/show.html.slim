@@ -8,9 +8,10 @@ table.table
         th = list.name
 
   tbody
-    - @friends.each do |user|
+    - @friends.each_with_index do |user, i|
       tr
         td
+          = i + 1
           = "@#{user.screen_name}"
           = image_tag user.profile_image_url
         - @lists.each do |list|

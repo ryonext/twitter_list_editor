@@ -1,8 +1,10 @@
 class DashboardsController < ApplicationController
+  FRIENDS_COUNT = 200
+
   def show
-    response = twitter.friends(cursor: params[:cursor])
+    response = twitter.friends(cursor: params[:cursor], count: FRIENDS_COUNT)
     @next = response.attrs[:next_cursor]
-    @friends = response.take(20)
+    @friends = response.take(FRIENDS_COUNT)
     @lists = twitter.lists.sort_by(&:name)
   end
 
