@@ -5,7 +5,7 @@ table.table
     tr
       th user
       - @lists.each do |list|
-        th = list.name
+        th = list.list.name
 
   tbody
     - @friends.each_with_index do |user, i|
@@ -15,5 +15,9 @@ table.table
           = "@#{user.screen_name}"
           = image_tag user.profile_image_url
         - @lists.each do |list|
-          td ◯
+          td
+            - if list.member?(user)
+              | ◯
+            - else
+              | ☓
 = link_to "Next", dashboard_path(cursor: @next)

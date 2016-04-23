@@ -5,7 +5,8 @@ class DashboardsController < ApplicationController
     response = twitter.friends(cursor: params[:cursor], count: FRIENDS_COUNT)
     @next = response.attrs[:next_cursor]
     @friends = response.take(FRIENDS_COUNT)
-    @lists = twitter.lists.sort_by(&:name)
+    lists = twitter.lists.sort_by(&:name)
+    @lists = lists.map {|l| ListWithMembers.new(list: l) }
   end
 
   private
