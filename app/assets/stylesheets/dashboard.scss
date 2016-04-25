@@ -1,0 +1,42 @@
+table.table-headerfixed {
+/*    width: 100%;*/
+}
+
+table.table-headerfixed thead,
+table.table-headerfixed tbody,
+table.table-headerfixed tr,
+table.table-headerfixed td,
+table.table-headerfixed th {
+    display: block;
+}
+
+table.table-headerfixed tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+table.table-headerfixed tbody {
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+table.table-headerfixed thead {
+    /* fallback */
+    width: 97%;
+    /* minus scroll bar width */
+    width: calc(100% - 17px);
+}
+
+table.table-headerfixed tbody td,
+table.table-headerfixed thead th {
+    float: left;
+    height: 100%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

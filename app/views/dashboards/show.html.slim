@@ -1,23 +1,24 @@
 h1 Listing lists
 
-table.table
+table.table.table-headerfixed
   thead
     tr
-      th user
+      th width="30%" user
       - @lists.each do |list|
-        th = list.list.name
+        th width="5%"
+          = list.list.name
 
   tbody
     - @friends.each_with_index do |user, i|
       tr
-        td
+        td width="30%"
           = i + 1
           = "@#{user.screen_name}"
           = image_tag user.profile_image_url
         - @lists.each do |list|
-          td
-            /- if user.in? list.members
-            /  | ◯
-            /- else
-            /  | ☓
+          td width="5%"
+            - if user.in? list.members
+              | ◯
+            - else
+              | ☓
 = link_to "Next", dashboard_path(cursor: @next)
