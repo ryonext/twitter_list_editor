@@ -16,8 +16,6 @@ table.table.table-headerfixed
           = "@#{user.screen_name}"
         - @lists.each do |list|
           td width="5%"
-            - if user.in? list.members
-              | ◯
-            - else
-              | ☓
+            = form_for list do |f|
+              = f.check_box :in_member, { checked: user.in?(list.members) }
 = link_to "Next", dashboard_path(cursor: @next)
