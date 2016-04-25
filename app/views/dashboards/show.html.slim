@@ -3,7 +3,7 @@ h1 Listing lists
 table.table.table-headerfixed
   thead
     tr
-      th width="30%" user
+      th width="10%" user
       - @lists.each do |list|
         th width="5%"
           = list.list.name
@@ -11,10 +11,9 @@ table.table.table-headerfixed
   tbody
     - @friends.each_with_index do |user, i|
       tr
-        td width="30%"
-          = i + 1
-          = "@#{user.screen_name}"
+        td width="10%"
           = image_tag user.profile_image_url
+          = "@#{user.screen_name}"
         - @lists.each do |list|
           td width="5%"
             - if user.in? list.members
