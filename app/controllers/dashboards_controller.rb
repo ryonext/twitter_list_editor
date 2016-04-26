@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  FRIENDS_COUNT = ENV["FRIENDS_COUNT"] || 200
+  FRIENDS_COUNT = ENV["FRIENDS_COUNT"].to_i || 200
 
   def show
     response = twitter.friends(cursor: params[:cursor], count: FRIENDS_COUNT)
