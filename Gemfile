@@ -12,6 +12,7 @@ gem "sqlite3"
 gem "twitter"
 gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 1.3.0"
+gem "vuejs-rails"
 
 group :development, :test do
   gem "byebug"
