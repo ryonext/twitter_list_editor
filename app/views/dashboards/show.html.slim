@@ -1,21 +1,33 @@
 h1 Listing lists
 
-table.table.table-headerfixed
-  thead
-    tr
-      th width="10%" user
-      - @lists.each do |list|
-        th width="5%"
-          = list.list.name
-
-  tbody
-    - @friends.each_with_index do |user, i|
+#user-in-list
+  table.table.table-headerfixed
+    thead
       tr
-        td width="10%"
-          = image_tag user.profile_image_url
-          = "@#{user.screen_name}"
+        th width="10%" user
         - @lists.each do |list|
-          td width="5%"
-            = form_for list do |f|
-              = f.check_box :in_member, { checked: user.in?(list.members) }
-= link_to "Next", dashboard_path(cursor: @next)
+          th width="5%"
+            = list.list.name
+
+    tbody
+      user v-for="user in users" :user="user"
+      /- @friends.each_with_index do |user, i|
+      /  tr
+      /    td width="10%"
+      /      = image_tag user.profile_image_url
+      /      = "@#{user.screen_name}"
+      /    - @lists.each do |list|
+      /      td width="5%"
+      /        = form_for list do |f|
+      /          = f.check_box :in_member, { checked: user.in?(list.members) }
+  = link_to "Next", dashboard_path(cursor: @next)
+
+script type="x/template" id="user"
+  tr
+    td width="10%"
+      img :src="user.profile_image_url"
+      | {{ user.screen_name }}
+    /- @lists.each do |list|
+    /  td width="5%"
+    /    = form_for list do |f|
+    /      = f.check_box :in_member, { checked: user.in?(list.members) }
