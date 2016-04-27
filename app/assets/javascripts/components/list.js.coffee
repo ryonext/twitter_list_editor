@@ -5,7 +5,11 @@ $ ->
     props:
       name: null
       members: null
+      checked: null
+      user: null
+    ready: ->
+      this.checked = this.isMember()
     methods:
-      isMember: (screenName) ->
-        this.members.include(screenName)
+      isMember: ->
+        this.members.includes(this.user)
   )

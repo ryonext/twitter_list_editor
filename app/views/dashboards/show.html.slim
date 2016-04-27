@@ -12,12 +12,12 @@ script type="x/template" id="user"
           img :src="user.profile_image_url"
           | @{{ user.screen_name }}
       .member-of-list
-        table.table
-          list v-for="list in listMembers" :name="list.name" :members="list.members" :list="list"
+        ul.list-gorup
+          list v-for="list in listMembers" :name="list.name" :members="list.members" :user="user.id"
 
 script type="x/template" id="list"
-  tr
-    th
-      | {{ name }}
-    td
-      input type="checkbox"
+  li.list-group-item
+    .checkbox
+      label
+        input type="checkbox" v-model="checked"
+        | {{ name }}
