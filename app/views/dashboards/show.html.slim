@@ -1,16 +1,16 @@
 h1 Listing lists
 
 #user-in-list
-  ul.list-group
-    user v-for="user in users" :user="user"
+  user v-for="user in users" :user="user"
   = link_to "Next", dashboard_path(cursor: @next)
 
 script type="x/template" id="user"
-  li.list-group-item
-    .user-box
-      .user-profile
-        img :src="user.profile_image_url"
-        | @{{ user.screen_name }}
+  .col-sm-6.col-md-4
+    .user-box.panel.panel-default
+      .user-profile-wrap
+        .user-profile
+          img :src="user.profile_image_url"
+          | @{{ user.screen_name }}
       .member-of-list
         table.table
           - @lists.each do |list|
