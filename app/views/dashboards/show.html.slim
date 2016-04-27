@@ -1,7 +1,7 @@
 h1 Listing lists
 
 #user-in-list
-  user v-for="user in users" :user="user"
+  user v-for="user in users" :user="user" :list-members="listMembers"
   = link_to "Next", dashboard_path(cursor: @next)
 
 script type="x/template" id="user"
@@ -13,8 +13,11 @@ script type="x/template" id="user"
           | @{{ user.screen_name }}
       .member-of-list
         table.table
-          - @lists.each do |list|
-            tr
-              th = list.list.name
-              td
-                input type="checkbox"
+          list v-for="list in listMembers" :name="list.name" :members="list.members" :list="list"
+
+script type="x/template" id="list"
+  tr
+    th
+      | {{ name }}
+    td
+      input type="checkbox"
