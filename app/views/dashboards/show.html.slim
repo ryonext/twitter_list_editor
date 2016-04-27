@@ -1,17 +1,20 @@
 h1 Listing lists
 
 #user-in-list
-  user v-for="user in users" :user="user"
+  ul.list-group
+    user v-for="user in users" :user="user"
   = link_to "Next", dashboard_path(cursor: @next)
 
 script type="x/template" id="user"
-  .user-profile
-    img :src="user.profile_image_url"
-    | @{{ user.screen_name }}
-  .member-of-list
-    table.table
-      - @lists.each do |list|
-        tr
-          th = list.list.name
-          td
-            input type="checkbox"
+  li.list-group-item
+    .user-box
+      .user-profile
+        img :src="user.profile_image_url"
+        | @{{ user.screen_name }}
+      .member-of-list
+        table.table
+          - @lists.each do |list|
+            tr
+              th = list.list.name
+              td
+                input type="checkbox"

@@ -40,3 +40,16 @@ table.table-headerfixed thead th {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.user-box {
+  overflow: hidden;
+}
+
+.user-profile {
+  float: left;
+  width: 150px
+}
+
+.member-of-list {
+  float: left;
+}
