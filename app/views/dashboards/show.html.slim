@@ -12,7 +12,7 @@ script type="x/template" id="user"
           img :src="user.profile_image_url"
           | @{{ user.screen_name }}
       .member-of-list
-        ul.list-gorup
+        ul.list-group
           list v-for="list in listMembers" :name="list.name" :members="list.members" :user="user.id"
 
 script type="x/template" id="list"
