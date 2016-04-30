@@ -19,5 +19,5 @@ script type="x/template" id="list"
   li.list-group-item
     .checkbox
       label
-        input type="checkbox" v-model="checked"
+        input type="checkbox" v-model="checked" @click="checkedChanged"
         | {{ name }}
