@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def create
-    twitter.add_list_member(member_params[:list], member_params[:user])
+    twitter.add_list_member(member_params[:list].to_i, member_params[:user].to_i)
     render nothing: true
   end
 

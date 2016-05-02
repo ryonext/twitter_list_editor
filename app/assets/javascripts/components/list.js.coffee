@@ -3,7 +3,7 @@ $ ->
     "list"
     template: "#list"
     props:
-      name: null
+      list: null
       members: null
       checked: null
       user: null
@@ -11,13 +11,13 @@ $ ->
       this.checked = this.isMember()
     methods:
       isMember: ->
-        this.members.includes(this.user)
+        this.members.includes(this.user.id)
       checkedChanged: ->
         unless this.checked
           data = {
             member:
-              list: this.name
-              user: this.user
+              list: this.list.id_str
+              user: this.user.id_str
           }
 
           this.$http(

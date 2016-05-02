@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
     @lists = lists.map {|l| List.new(list: l) }
     gon.list_members = @lists.map do |l|
       {
-        name: l.list.name,
+        list: l.list,
         members: l.members.map(&:id),
       }
     end
