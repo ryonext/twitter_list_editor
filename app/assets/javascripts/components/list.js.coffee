@@ -11,7 +11,7 @@ $ ->
       this.checked = this.isMember()
     methods:
       isMember: ->
-        this.members.includes(this.user.id)
+        this.members.includes(this.user.id_str)
       checkedChanged: ->
         unless this.checked
           data = {
