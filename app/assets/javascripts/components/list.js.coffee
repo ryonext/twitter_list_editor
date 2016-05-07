@@ -18,7 +18,6 @@ $ ->
             list: this.list.id_str
             user: this.user.id_str
         }
-
         unless this.checked
           this.$http(
             method: "POST"
