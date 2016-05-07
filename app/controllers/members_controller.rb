@@ -1,4 +1,9 @@
 class MembersController < ApplicationController
+  def index
+    member_id_lists = twitter.list_members(params[:list_id], count: 200).map(&:id_str)
+    render json: member_id_lists
+  end
+
   def create
     twitter.add_list_member(member_params[:list].to_i, member_params[:user].to_i)
     render nothing: true

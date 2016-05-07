@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: "dashboards#show"
 
   resources :lists
-  resources :members, only: [:create, :destroy], defaults: { format: :json }
+  resources :members, only: [:index, :create, :destroy], defaults: { format: :json }
 end
