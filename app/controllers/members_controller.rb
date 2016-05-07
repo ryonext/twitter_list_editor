@@ -4,6 +4,11 @@ class MembersController < ApplicationController
     render nothing: true
   end
 
+  def destroy
+    twitter.remove_list_member(member_params[:list].to_i, member_params[:user].to_i)
+    render nothing: true
+  end
+
   private
 
     def member_params

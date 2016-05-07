@@ -13,13 +13,13 @@ $ ->
       isMember: ->
         this.members.includes(this.user.id_str)
       checkedChanged: ->
-        unless this.checked
-          data = {
-            member:
-              list: this.list.id_str
-              user: this.user.id_str
-          }
+        data = {
+          member:
+            list: this.list.id_str
+            user: this.user.id_str
+        }
 
+        unless this.checked
           this.$http(
             method: "POST"
             url: "/members"
@@ -32,6 +32,16 @@ $ ->
             alert("error")
           )
         else
-          # TODO implement destroy
-          console.log("unchecked")
+          this.$http(
+            method: "DELETE"
+            url: "/members/#{this.list.id_str}"
+            data: data
+            headers:
+              "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+          ).then( (response) ->
+            alert("success")
+          ).catch( (err) ->
+            alert("error")
+          )
+
   )
