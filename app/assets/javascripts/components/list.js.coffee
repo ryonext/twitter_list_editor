@@ -27,7 +27,7 @@ $ ->
             headers:
               "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
           ).then( (response) ->
-            alert("success")
+            # do nothing
           ).catch( (err) ->
             alert("error")
           )
@@ -39,7 +39,7 @@ $ ->
             headers:
               "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
           ).then( (response) ->
-            alert("success")
+            # do nothing
           ).catch( (err) ->
             alert("error")
           )
