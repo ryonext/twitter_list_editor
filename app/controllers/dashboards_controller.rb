@@ -11,6 +11,7 @@ class DashboardsController < ApplicationController
       {
         list: l.list,
         members: [],
+        completed: false,
       }
     end
     gon.current_user_id = twitter.user.id

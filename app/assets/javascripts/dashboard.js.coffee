@@ -19,5 +19,7 @@ $ ->
           list.members = response.data
         ).catch( (err) ->
           alert("error")
+        ).finally( ->
+          list.completed = true
         )
   )

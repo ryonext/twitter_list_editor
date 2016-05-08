@@ -6,6 +6,7 @@ $ ->
       list: null
       members: null
       user: null
+      completed: Boolean
     computed:
       checked: ->
         this.members.includes(this.user.id_str)

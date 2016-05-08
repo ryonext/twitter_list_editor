@@ -13,11 +13,15 @@ script type="x/template" id="user"
           | @{{ user.screen_name }}
       .member-of-list
         ul.list-group
-          list v-for="list in listMembers" :list="list.list" :members="list.members" :user="user"
+          list v-for="list in listMembers" :list="list.list" :members="list.members" :user="user" :completed="list.completed"
 
 script type="x/template" id="list"
   li.list-group-item
     .checkbox
       label
-        input type="checkbox" v-model="checked" @click="checkedChanged"
-        | {{ list.name }}
+        div v-if="completed"
+          input type="checkbox" v-model="checked" @click="checkedChanged"
+          | {{ list.name }}
+        div(v-else)
+          span.label.label-primary
+            | Loading...
