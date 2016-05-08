@@ -5,13 +5,11 @@ $ ->
     props:
       list: null
       members: null
-      checked: null
       user: null
-    ready: ->
-      this.checked = this.isMember()
-    methods:
-      isMember: ->
+    computed:
+      checked: ->
         this.members.includes(this.user.id_str)
+    methods:
       checkedChanged: ->
         data = {
           member:
