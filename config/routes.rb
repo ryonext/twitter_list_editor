@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :lists
   resources :members, only: [:index, :create, :destroy], defaults: { format: :json }
+  resources :friends, only: [:index]
 end
