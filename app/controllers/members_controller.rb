@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def index
-    member_id_lists = twitter.list_members(params[:list_id].to_i, count: 200).map(&:id_str)
+    member_id_lists = twitter.list_members(list_id: params[:list_id], owner_id: params[:owner_id], count: 200).map {|m| m.to_h[:id_str] }
     render json: member_id_lists
   end
 

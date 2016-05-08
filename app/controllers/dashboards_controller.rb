@@ -10,9 +10,10 @@ class DashboardsController < ApplicationController
     gon.list_members = @lists.map do |l|
       {
         list: l.list,
-        members: []
+        members: [],
       }
     end
+    gon.current_user_id = twitter.user.id
   end
 
   private
