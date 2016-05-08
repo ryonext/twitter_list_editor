@@ -2,7 +2,8 @@ h1 Listing lists
 
 #user-in-list
   user v-for="user in users" :user="user" :list-members="listMembers"
-  = link_to "Next", dashboard_path(cursor: @next)
+  a href="#" @click.prevent="fetchNext"
+    | Next
 
 script type="x/template" id="user"
   .col-sm-6.col-md-4

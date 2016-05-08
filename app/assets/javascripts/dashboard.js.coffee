@@ -5,6 +5,7 @@ $ ->
       currentUserId: gon.current_user_id
       users: gon.friends
       listMembers: gon.list_members
+      next: gon.next
     ready: ->
       for list in this.listMembers
         this.fetchMembers(list)
@@ -22,4 +23,17 @@ $ ->
         ).finally( ->
           list.completed = true
         )
+      fetchNext: ->
+        this.$http(
+          method: "GET"
+          url: "/friends?cursor=#{this.next}"
+          headers:
+            "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+        ).then( (response) ->
+          this.users = this.users.concat(response.data.friends)
+          this.next = response.data.next
+        ).catch( (err) ->
+          alert("error")
+        )
   )
+
