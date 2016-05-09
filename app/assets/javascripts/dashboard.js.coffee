@@ -6,6 +6,7 @@ $ ->
       users: gon.friends
       listMembers: gon.list_members
       next: gon.next
+      fetching: false
     ready: ->
       for list in this.listMembers
         this.fetchMembers(list)
@@ -24,6 +25,7 @@ $ ->
           list.completed = true
         )
       fetchNext: ->
+        this.fetching = true
         this.$http(
           method: "GET"
           url: "/friends?cursor=#{this.next}"
@@ -34,6 +36,8 @@ $ ->
           this.next = response.data.next
         ).catch( (err) ->
           alert("error")
+        ).finally( ->
+          this.fetching = false
         )
   )
 

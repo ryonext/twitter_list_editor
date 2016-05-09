@@ -2,8 +2,11 @@ h1 Listing lists
 
 #user-in-list
   user v-for="user in users" :user="user" :list-members="listMembers"
-  a href="#" @click.prevent="fetchNext"
-    | Next
+  div v-if="fetching"
+    i.fa.fa-spinner.fa-spin.fa-3x
+  div(v-else)
+    a href="#" @click.prevent="fetchNext"
+      | Next
 
 script type="x/template" id="user"
   .col-sm-6.col-md-4
