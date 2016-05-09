@@ -2,7 +2,7 @@ h1 Listing lists
 
 #user-in-list
   user v-for="user in users" :user="user" :list-members="listMembers"
-  .col-md-6.col-md-4
+  .col-md-4
     .next-box
       div v-if="fetching"
         i.fa.fa-spinner.fa-spin.fa-3x
@@ -11,11 +11,12 @@ h1 Listing lists
           | Next
 
 script type="x/template" id="user"
-  .col-sm-6.col-md-4
+  .col-md-4
     .user-box.panel.panel-default
       .user-profile-wrap
         .user-profile
           img :src="user.profile_image_url"
+          br
           | @{{ user.screen_name }}
       .member-of-list
         ul.list-group
