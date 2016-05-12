@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def login_required
+      unless session[:access_token]
+        redirect_to new_session_path
+      end
+    end
+
     def twitter
       @twitter ||= Twitter::REST::Client.new do |config|
         config.consumer_key = ENV["CONSUMER_KEY"]
