@@ -12,6 +12,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "slim-rails"
 gem "sqlite3"
 gem "twitter"
+gem "twitter_oauth"
 gem "twitter-bootstrap-rails"
 gem "uglifier", ">= 1.3.0"
 gem "vuejs-rails"
