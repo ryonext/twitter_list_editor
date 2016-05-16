@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       consumer_key: ENV["CONSUMER_KEY"],
       consumer_secret: ENV["CONSUMER_SECRET"],
     )
-    request_token = client.request_token(oauth_callback: "http://localhost:3000/session/callback")
+    request_token = client.request_token(oauth_callback: callback_url)
     session[:request_token] = request_token.token
     session[:request_token_secret] = request_token.secret
     redirect_to request_token.authorize_url
@@ -27,4 +27,11 @@ class SessionsController < ApplicationController
     session[:access_token_secret] = access_token.secret
     redirect_to "/"
   end
+
+  private
+
+    def callback_url
+      host = ENV["HOST"] || "http://localhost:3000"
+      File.join(host, "/session/callback")
+    end
 end
