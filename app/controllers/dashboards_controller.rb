@@ -15,6 +15,5 @@ class DashboardsController < ApplicationController
       }
     end
     gon.current_user_id = twitter.user.id
-
   end
 end
