@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     gon.next = response.attrs[:next_cursor]
     gon.friends = @friends = response.take(FRIENDS_COUNT)
     lists = twitter.lists.sort_by(&:name)
-    @lists = lists.map {|l| List.new(list: l) }
+    @lists = lists.map {|l| ListWithMembers.new(list: l) }
     gon.list_members = @lists.map do |l|
       {
         list: l.list,

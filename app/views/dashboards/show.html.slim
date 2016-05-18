@@ -20,7 +20,7 @@ script type="x/template" id="user"
           | @{{ user.screen_name }}
       .member-of-list
         ul.list-group
-          list v-for="list in listMembers" :list="list.list" :members="list.members" :user="user" :completed="list.completed"
+          list v-for="l in listMembers" :list="l.list" :members="l.members" :user="user" :completed="l.completed"
 
 script type="x/template" id="list"
   li.list-group-item
