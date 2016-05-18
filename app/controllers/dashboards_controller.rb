@@ -1,6 +1,5 @@
 class DashboardsController < ApplicationController
   before_action :login_required
-  FRIENDS_COUNT = (ENV["FRIENDS_COUNT"] || 200).to_i
 
   def show
     response = twitter.friends(cursor: params[:cursor], count: FRIENDS_COUNT)
